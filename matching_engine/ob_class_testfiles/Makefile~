@@ -1,0 +1,22 @@
+CXX=g++
+CXXFLAGS=-Wall -g -pedantic
+
+all: init_test
+
+init_test.o:	init_test.cpp
+				$(CXX) $(CXXFLAGS) -c init_test.cpp
+
+Order_book.o:	Order_book.cpp
+				$(CXX) $(CXXFLAGS) -c Order_book.cpp
+
+Order.o:	Order.cpp
+				$(CXX) $(CXXFLAGS) -c Order.cpp
+
+Order_q.o:	Order_q.cpp
+				$(CXX) $(CXXFLAGS) -c Order_q.cpp
+
+init_test:	init_test.o Order_book.o Order.o Order_q.o
+				$(CXX) $(CXXFLAGS) -o init_test init_test.o Order_book.o Order.o Order_q.o
+
+clean: 
+				rm -f *.o init_test order_book 
